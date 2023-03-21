@@ -6,6 +6,8 @@ body{
 }
 
 :root{
+/* Цвета */
+
     --main-color: #4D5AE5;
     --white-color: #FFFFFF;
     --button-color: #404BBF;
@@ -17,6 +19,14 @@ body{
     --hover-border:#AFB1B8;
     --footer-hover:#31D0AA;
     --background-footer:#FFFFFF1A;
+    --backdrop:rgba(46, 47, 66, 0.4);
+    --modal-background:#FCFCFC;
+
+/* Анимация времени */
+
+    --anim-slow: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --modal-idx: 100;
+
 }
 
 *{
@@ -137,6 +147,23 @@ img{
 .now-link:hover,
 .now-link:focus{
     color: var(--main-color);
+    transition: var(--anim-slow);
+}
+
+.navigation-nav .current-line{
+    color: var(--button-color);
+    position: relative;
+}
+
+.current-line::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--button-color);
+    border-radius: 2px;
 }
 
 .list-portfolio{
@@ -181,6 +208,7 @@ img{
 .link:focus,
 .link:hover{
     color: var(--button-color);
+    transition: var(--anim-slow);
 }
 
 .hero{
@@ -230,6 +258,7 @@ img{
 .hero-button:hover{
     background-color: var(--button-color);
     color: var(--white-color);
+    transition: var(--anim-slow);
 }
 
 .section-info{
@@ -331,10 +360,46 @@ img{
 .socials-link:hover,
 .socials-link:focus{
     background-color: var(--button-color);
+    transition: var(--anim-slow);
 }
 
 .group{
     width: 360px;
+}
+
+.overlay-group{
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translateY(100%);
+
+    width: 100%;
+    height: 100%;
+
+    padding: 40px 32px 164px 32px;
+    backdrop-filter: blur(2px);
+    background-color: var(--main-color);
+
+    transition: transform var(--anim-slow);
+}
+
+
+.group-item:hover .overlay,
+.group-item:focus .overlay{
+    transform: translateY(0%);
+}
+
+.overlay-text{
+    color: var(--logo-color);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
 }
 
 .group-item{
@@ -353,11 +418,13 @@ img{
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
     border-color: var(--logo-color);
     outline: transparent;
+    transition: var(--anim-slow);
 }
 
 .group-item:hover,
 .group-item:focus{
     outline: transparent;
+    transition: var(--anim-slow);
 }
 
 .future-text{
@@ -458,12 +525,13 @@ img{
 .customers-link:hover,
 .customers-link:focus{
     border: 1px solid var(--button-color);
+    transition: var(--anim-slow);
 }
 
 .customers-link:focus .customers-icon,
 .customers-link:hover .customers-icon {
     fill:  var(--button-color);
-   
+   transition: var(--anim-slow);
 }
 
 .footer{
@@ -545,6 +613,7 @@ img{
 .socials-link-footer:hover, 
 .socials-link-footer:focus{
     background-color: var(--footer-hover);
+    transition: var(--anim-slow);
 }
 
 
@@ -595,6 +664,7 @@ img{
 .now-button:hover{
     background: var(--button-color);
     color: var(--white-color);
+    transition: var(--anim-slow);
     
     border-color: transparent;
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -603,4 +673,74 @@ img{
 
 .portfolio-btn:first-child{
     margin-left: 0px;
+}
+
+.backdrop{
+    position: fixed;
+    top: 0;
+    z-index: var(--modal-idx);
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--backdrop);
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+
+    transition: opacity var(--anim-slow), visibility var(--anim-slow);
+}
+
+.backdrop.is-hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal{
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    padding: 30px;
+    width: 408px;
+    height: 576px;
+    background-color: var(--modal-background);
+
+    
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    transition: opacity var(--anim-slow) 300ms, var(--anim-slow) 300ms;
+}
+
+.backdrop.is-hidden .modal{
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) scale(0.3);
+}
+
+.modal-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(-100%) translateY(100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    border: none;
+    background-color: var(--border-color);
+    border-radius: 50%;
+    background: var(--border-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-icon{
+    fill: var(--link-color);
 }
