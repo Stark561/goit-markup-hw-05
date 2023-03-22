@@ -142,12 +142,13 @@ img{
     font-weight: 500;
     line-height: 1.5;
     text-decoration: none;
+    transition: color var(--anim-slow);
 }
 
 .now-link:hover,
 .now-link:focus{
     color: var(--main-color);
-    transition: var(--anim-slow);
+
 }
 
 .navigation-nav .current-line{
@@ -161,7 +162,7 @@ img{
     width: 100%;
     height: 4px;
     left: 0;
-    bottom: 0;
+    bottom: -1px;
     background-color: var(--button-color);
     border-radius: 2px;
 }
@@ -203,12 +204,12 @@ img{
     line-height: 1.5;
     text-decoration: none;
     letter-spacing: normal;
+    transition: color var(--anim-slow);
 }
 
 .link:focus,
 .link:hover{
     color: var(--button-color);
-    transition: var(--anim-slow);
 }
 
 .hero{
@@ -252,13 +253,14 @@ img{
     line-height: 1.5;
     cursor: pointer;
     letter-spacing: 0.04em;
+
+    transition: background-color var(--anim-slow);
 }
 
 .hero-button:focus,
 .hero-button:hover{
     background-color: var(--button-color);
     color: var(--white-color);
-    transition: var(--anim-slow);
 }
 
 .section-info{
@@ -355,12 +357,12 @@ img{
     border-radius: 50%;
     fill: var(--logo-color);
    
+    transition: background-color var(--anim-slow);
 }
 
 .socials-link:hover,
 .socials-link:focus{
     background-color: var(--button-color);
-    transition: var(--anim-slow);
 }
 
 .group{
@@ -516,10 +518,12 @@ img{
     border: 1px solid var(--border-radius);
     border-radius: 4px;
     outline: transparent;
+    transition: fill var(--anim-slow), border var(--anim-slow);
 }
 
 .customers-icon{
     fill: var(--border-radius);
+    transition: var(--anim-slow);
 }
 
 .customers-link:hover,
@@ -531,7 +535,7 @@ img{
 .customers-link:focus .customers-icon,
 .customers-link:hover .customers-icon {
     fill:  var(--button-color);
-   transition: var(--anim-slow);
+
 }
 
 .footer{
@@ -604,6 +608,8 @@ img{
     background-color: var(--background-footer);
 
     border-radius: 50%;
+
+    transition: background-color var(--anim-slow);
 }
 
 .socials-icon-footer{
@@ -613,7 +619,6 @@ img{
 .socials-link-footer:hover, 
 .socials-link-footer:focus{
     background-color: var(--footer-hover);
-    transition: var(--anim-slow);
 }
 
 
@@ -658,11 +663,12 @@ img{
 .now-button{
     border-radius: 4px;
     outline: transparent;
+    transition: color var(--anim-slow), background-color var(--anim-slow);
 }
 
 .now-button:focus,
 .now-button:hover{
-    background: var(--button-color);
+    background-color: var(--button-color);
     color: var(--white-color);
     transition: var(--anim-slow);
     
@@ -700,7 +706,7 @@ img{
 
 .modal{
     position: absolute;
-    top: 43%;
+    top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 
@@ -739,6 +745,7 @@ img{
     border-radius: 50%;
     background: var(--border-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .modal-icon{
