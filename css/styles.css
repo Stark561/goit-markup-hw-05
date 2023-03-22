@@ -1,8 +1,14 @@
-body{
+.page{
     font-family:'Roboto', sans-serif;
     font-size: 16px;
     background-color: var(--white-color);
     letter-spacing: 0.02em;
+
+    overflow-y: hidden;
+}
+
+.page.no-scroll{
+    overflow-y: auto;
 }
 
 :root{
